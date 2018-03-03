@@ -1,0 +1,85 @@
+<div class="">
+  <div class="text-center picture">
+      <img [src]="user.picture" alt="profile" class="img-circle img-thumbnail"
+      (mouseover)="pictureMouseOver()" (mouseleave)="pictureMouseLeave()">
+      <label for="btn" class="btn btn-info" id="picture-btn" (mouseover)="pictureMouseOver()"
+        >사진 변경</label>
+      <input type="file" *ngIf=pictureMouseOver class="btn btn-info file" id="btn"
+        ng2FileSelect [uploader]="uploader" (change)="onChange()">
+
+          <table class="table" *ngIf="pictureChange">
+                <thead>
+                <tr>
+                    <th width="50%">Name</th>
+                    <th>Size</th>
+                    <th>Progress</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let item of uploader.queue">
+                    <td><strong>{{ item?.file?.name }}</strong></td>
+                    <td *ngIf="uploader.isHTML5" nowrap>{{ item?.file?.size/1024/1024 | number:'.2' }} MB</td>
+                    <td *ngIf="uploader.isHTML5">
+                        <div class="progress" style="margin-bottom: 0;">
+                            <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': item.progress + '%' }"></div>
+                        </div>
+                    </td>
+                    <td class="text-center">
+                        <span *ngIf="item.isSuccess"><i class="glyphicon glyphicon-ok"></i></span>
+                        <span *ngIf="item.isCancel"><i class="glyphicon glyphicon-ban-circle"></i></span>
+                        <span *ngIf="item.isError"><i class="glyphicon glyphicon-remove"></i></span>
+                    </td>
+                    <td nowrap>
+                        <button type="button" class="btn btn-success btn-xs"
+                                (click)="item.upload()" [disabled]="item.isReady || item.isUploading || item.isSuccess">
+                            <span class="glyphicon glyphicon-upload"></span> Upload
+                        </button>
+                        <button type="button" class="btn btn-warning btn-xs"
+                                (click)="item.cancel()" [disabled]="!item.isUploading">
+                            <span class="glyphicon glyphicon-ban-circle"></span> Cancel
+                        </button>
+                        <button type="button" class="btn btn-danger btn-xs"
+                                (click)="item.remove()">
+                            <span class="glyphicon glyphicon-trash"></span> Remove
+                        </button>
+                    </td>
+                    <td>
+                        <div class="progress" style="">
+                            <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': uploader.progress + '%' }"></div>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+      <div class="my-info">아이디:{{ user.id }}</div>
+
+    <div class="my-info" *ngIf=idChange> 이름:{{ user.name }}
+      <button type="button" name="button" class="btn btn-warning modal-btn"
+          (click)="idChange = !idChange">변경</button></div>
+
+      <form class="my-info" [formGroup]="nameForm" (ngSubmit)="infoChange('/name', this.nameForm.value.name)" *ngIf=!idChange> 이름:
+          <input type="text" placeholder="name" formControlName="name" class="form-control">
+          <button type="submit" name="submit" class="btn btn-success">확인</button>
+          <button type="button" name="button" class="btn btn-danger" (click)="idChange = !idChange">취소</button>
+      </form>
+
+    <div class="my-info">소개: </div>
+    <div *ngIf=commentChange>
+      <div class="jumbotron jumbotron-fluid info-comment">
+        <div class="container">
+          <p class="lead">{{ user.comment }}</p>
+        </div>
+      </div>
+      <button type="button" name="button" class="btn btn-warning modal-btn"
+            (click)="commentChange = !commentChange">변경</button>
+    </div>
+
+    <form [formGroup]="commentForm" (ngSubmit)="infoChange('/comment', this.commentForm.value.comment)" *ngIf=!commentChange>
+      <textarea class="form-control" formControlName="comment" id="exampleFormControlTextarea1" rows="5"></textarea>
+      <button type="submit" name="submit" class="btn btn-success ">확인</button>
+      <button type="button" name="button" class="btn btn-danger" (click)="commentChange = !commentChange">취소</button>
+    </form>
+</div>

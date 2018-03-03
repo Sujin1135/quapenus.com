@@ -1,0 +1,9 @@
+<div class="col-md-3" *ngFor="let song of songs">
+  <a [routerLink]="['/song', song.id]">
+    <img class="img-rounded img-thumbnail" [src]="song.picture">
+      <div class="caption">
+        <h4 class="text-center title main">{{ song.title }}</h4>
+        <h4 class="text-center title name">Artist:  {{ song.name }} </h4>
+    </div>
+  </a>
+</div>

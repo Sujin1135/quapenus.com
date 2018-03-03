@@ -1,0 +1,56 @@
+.pad {
+    padding-bottom : 10rem;
+}
+
+img {
+    width : 20em;
+    height : 20em;
+}
+
+.jumbotron {
+    margin-top : 4em;
+}
+
+h1 {
+    font-family: 'Ubuntu', sans-serif;
+}
+
+h4 {
+    font-family: 'Open Sans Condensed', sans-serif;
+    margin-top : 2em;
+    color: rgba(255, 127, 0, 1.0);
+}
+
+.btn-default {
+    margin-right: 1rem;
+}
+
+.mp3 {
+    margin-top:3.5rem;
+}
+
+.button {
+    margin-top: 4.5rem;
+}
+
+.btn-danger {
+    margin-right: 1rem;
+}
+
+.container {
+    margin-bottom: 5rem;
+}
+
+.update-btn {
+    margin-top: 2.5em;
+}
+
+.form-control {
+    margin-bottom: 2em;
+}
+
+.progress {
+    margin-top:2.5em;
+}
+
+@import url('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Ubuntu');

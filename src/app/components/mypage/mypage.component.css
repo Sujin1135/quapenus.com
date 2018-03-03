@@ -1,0 +1,32 @@
+.modal-btn {
+  margin-left: 1.5rem;
+}
+
+.my-info {
+  margin: 2rem;
+  font-size: 2rem;
+}
+
+.ok {
+  margin-top: 1rem;
+}
+
+img {
+  width: 22rem;
+  height: 22rem;
+}
+
+.picture {
+  position: relative;
+}
+
+.picture > .btn {
+  position: absolute;
+  top:65%;
+  left:43%;
+  display: none;
+}
+
+.file {
+  opacity: 0;
+}

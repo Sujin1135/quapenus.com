@@ -1,0 +1,80 @@
+<div class="container" *ngIf="!updateCheck">
+  <div class="col-md-3"></div>
+    <div class="col-md-8 pad">
+      <h1 class="display-3 text-center">{{song.title}}</h1>
+      <h4 class="text-center">{{song.name}}</h4>
+      <hr class="my-1">
+      <img class="img-rounded img-thumbnail img-responsive center-block" [src]="this.song.picture">
+      <div class="text-center mp3">
+        <audio controls="controls" src="{{this.song.song}}">
+          <source src="{{this.song.song}}" type="audio/ogg" />
+          <source src="{{this.song.song}}" type="audio/mpeg" />
+          Your browser does not support the audio element.
+        </audio>
+      </div>
+
+    <div class="jumbotron text-center">
+        {{ song.main }}
+    </div>
+      <button type="button" name="button" (click)="deleteSong()" *ngIf="btnCheck"
+        class="btn btn-danger">Delete</button>
+      <button *ngIf="btnCheck" (click)="update()" class="btn btn-primary">Update</button>
+      <a [routerLink]="['/song/write']" class="btn btn-info pull-right">Write</a>
+      <a [routerLink]="['/song']" class="btn btn-default pull-right">list</a>
+  </div>
+</div>
+
+<div class="container" *ngIf="updateCheck">
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-8 pad">
+      <form class="form-group" [formGroup]="formModel" (ngSubmit)="onSubmit()">
+        <h2 class="text-center">Song</h2>
+        <hr class="my-1">
+        <label for="title">Title:</label>
+        <input type="text" class="form-control" id="title" formControlName="title">
+        <label for="comment">Comment:</label>
+        <textarea name="comment" id="comment" rows="8" cols="50" class="form-control"
+          formControlName="comment"></textarea>
+        
+          <div class="row">
+            <div class="col-md-5">
+              <div class="form-group file-uploader">
+                <label for="single">Cover</label>
+                <input type="file" name="single" class="form-control" ng2FileSelect [uploader]="uploader"
+                  name="userfile" />
+              </div>
+              <p>파일 선택을 누르신 후 등록하시면 앨범 커버 사진을 등록할 수 있습니다!</p>
+            </div>
+            <div class="col-md-5">
+              <div class="progress">
+                <div class="progress-bar" role="progressbar" name="progress"
+                    [ngStyle]="{ 'width': uploader.progress + '%' }"></div>
+              </div>
+            </div>
+          </div>
+            
+          <div class="row">
+            <div class="col-md-5">
+              <div class="form-group file-uploader">
+                <label for="song">Song</label>
+                <input type="file" name="song" class="form-control" ng2FileSelect [uploader]="songUploader" />
+              </div>
+              <p>자신의 음원을 업로드 하세요!</p>
+            </div>
+            <div class="col-md-5">
+            <div class="progress">
+              <div class="progress-bar" role="progressbar" name="progress"
+                  [ngStyle]="{ 'width': uploader.progress + '%' }"></div>
+              </div>
+            </div>
+          </div>
+
+        <input type="submit" value="Submit" class="btn btn-success pull-right update-btn">
+        <button type="button" name="button" (click)="updateCheck = !updateCheck"
+                class="btn btn-danger pull-right update-btn">Cancel</button>
+      </form>
+    </div>
+  </div>
+</div>
+

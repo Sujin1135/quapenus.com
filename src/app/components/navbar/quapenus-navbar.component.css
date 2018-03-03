@@ -1,0 +1,36 @@
+body {
+    margin-top:30px;
+}
+
+#login-nav input {
+     margin-bottom: 15px;
+}
+
+.navbar-brand {
+    font-family: 'Libre Barcode 128 Text', cursive;
+    font-size: 2.5em;
+}
+
+.nav .navbar-nav {
+    margin:0%;
+}
+
+.container {
+    padding-left: 0.5%;
+}
+
+.navbar-li {
+    color: rgba(255,255,255,1.0);
+}
+
+ul li a {
+    color: rgba(255,255,255,1.0);
+}
+
+ul li a:hover {
+    color: rgba(255,127,80,1.0);
+}
+
+.navbar-li:hover {
+    color: rgba(255,127,80,1.0);
+}

@@ -1,0 +1,26 @@
+.join {
+    padding-top: 1.5rem;
+}
+
+#id-btn {
+    margin-left: 1.5rem;
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+    border-bottom-left-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+}
+
+.formSpan {
+    color: rgba(255,10,25,1);
+}
+
+.form-btn {
+    border-top-left-radius: 0.25rem;
+    border-top-right-radius: 0.25rem;
+    border-bottom-left-radius: 0.25rem;
+    border-bottom-right-radius: 0.25rem;
+}
+
+.pad {
+    padding-top: 2em;
+}

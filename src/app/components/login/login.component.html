@@ -1,0 +1,19 @@
+<form class="form" [formGroup]="formModel" role="form" method="post" action="login" accept-charset="UTF-8"
+        id="login-nav" (ngSubmit)="onSubmit()" *ngIf=!httpServer.loggdIn()>
+    <div class="form-group">
+        <label class="sr-only" for="exampleInputEmail2">ID</label>
+        <input type="email" class="form-control" id="exampleInputEmail2" formControlName="id" placeholder="ID" required>
+    </div>
+    <div class="form-group">
+        <label clas="sr-only" for="exampleInputPassword2">Password</label>
+        <input type="password" class="form-control" id="exampleInputPassword2" formControlName="pwd" placeholder="Password" required>
+    </div>
+    <div class="checkbox">
+        <label>
+        <input type="checkbox"> Remember me
+        </label>
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-success btn-block">Sign in</button>
+    </div>
+    </form>

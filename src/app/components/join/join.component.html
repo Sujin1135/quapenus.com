@@ -1,0 +1,73 @@
+<div class="join">
+<form [formGroup]="formModel" (ngSubmit)="onSubmit()">
+        <p>ID <br /><input type="text" formControlName="id" id="id" class="form-btn" (change)="idChecker = 2"> <input id="id-btn" class="btn-success" type="button" value="중복확인"
+            (click)="idCheck()"></p>
+        <span class="formSpan" [hidden]="!formModel.hasError('minlength', 'id')">아이디 형식이 올바르지 않습니다.</span>
+        <div formGroupName="pwdGroup">
+        <p>Password <br /><input type="password" formControlName="pwd" id="pwd" class="form-btn">
+        <span class="formSpan" [hidden]="!formModel.hasError('minlength', ['pwdGroup', 'pwd'])">비밀번호는 8자 이상 입력해주세요.</span>
+        </p>
+        <p>Password Confirm <br /><input type="password" formControlName="pconfirm" id="pwdConfirm" class="form-btn">
+        <span class="formSpan" [hidden]="!formModel.hasError('equal', 'pwdGroup')">비밀번호와 비밀번호 확인이 서로 다릅니다.</span>
+        </p>
+        </div>
+        <p>Name <br /><input type="text" formControlName="name" id="name" class="form-btn"></p>
+        <span class="formSpan" [hidden]="!formModel.hasError('minlength', 'name')">별명을 두글자 이상 설정해 주세요.</span>
+        <h3>Comment </h3><p><textarea cols="36"rows="5" formControlName="comment" id="comment" class="form-btn"></textarea></p>
+        <div class="form-group">
+            <label for="single">Profile</label>
+            <input type="file" class="form-control" name="single" ng2FileSelect [uploader]="uploader" />                                  
+        </div> 
+        <div>
+            <h3>Profile cover</h3>
+            Queue length: {{ uploader.queue.length }}
+
+            <table class="table">
+                <thead>
+                <tr>
+                    <th width="50%">Name</th>
+                    <th>Size</th>
+                    <th>Progress</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let item of uploader.queue">
+                    <td><strong>{{ item.file.name }}</strong></td>
+                    <td nowrap>{{ item.file.size/1024/1024 | number:'.2' }} MB</td>
+                    <td>
+                        <div class="progress" style="margin-bottom: 0;">
+                            <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': item.progress + '%' }"></div>
+                        </div>
+                    </td>
+                    <td class="text-center">
+                        <span *ngIf="item.isSuccess"><i class="glyphicon glyphicon-ok"></i></span>
+                        <span *ngIf="item.isCancel"><i class="glyphicon glyphicon-ban-circle"></i></span>
+                        <span *ngIf="item.isError"><i class="glyphicon glyphicon-remove"></i></span>
+                    </td>
+                    <td nowrap>
+                        <button type="button" class="btn btn-danger btn-xs"
+                                (click)="item.remove()">
+                            <span class="glyphicon glyphicon-trash"></span> Remove
+                        </button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <div>
+                <div>
+                    Queue progress:
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': uploader.progress + '%' }"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="pad">
+            <button type="submit" class="btn btn-success">Join</button>
+            <button type="button" class="btn btn-danger" id="cancel" data-dismiss="modal" aria-label="Close"
+                (click)="cancel()">Cancel</button>
+        </div>
+    </form>
+</div>

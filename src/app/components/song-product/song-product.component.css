@@ -1,0 +1,24 @@
+.caption {
+	height : 170px;
+	overflow : hidden;
+}
+
+img {
+	width : 15em;
+	height: 15em;
+}
+
+.caption-full {
+	padding : 9px;
+	color : #333;
+}
+
+.title {
+	margin-top : 1em; 
+	font-size : 15px;
+}
+
+a {
+	text-decoration: none;
+	color: rgba(255, 127, 0, 1.0);
+}
